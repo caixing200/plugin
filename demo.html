@@ -1,0 +1,545 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<style type="text/css">
+			body {
+				height: 100%;
+			}
+			
+			#app {
+				height: 100%;
+			}
+			
+			#table {
+				height: 100%;
+				padding: 5%;
+				position: relative;
+			}
+			
+			#table>div:first-child {
+				height: 100%;
+				background-color: orange;
+				border-radius: 15rem;
+			}
+			
+			#table>ul {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+			}
+			
+			#table>ul>li {
+				position: absolute;
+				width: 50px;
+				height: 50px;
+				transform: translate(-50%, -50%);
+				-webkit-transform: translate(-50%, -50%);
+				background-color: darkcyan;
+				top: 1rem;
+				left: 1rem;
+				border-radius: 10rem;
+				overflow: hidden;
+			}
+			
+			#table>ul>li>span {
+				font-size: 2rem;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				line-height: 1.5;
+			}
+			
+			#table>div:last-child {
+				position: absolute;
+				width: 80%;
+				top: 30%;
+				left: 10%;
+				text-align: center;
+			}
+			
+			#table>div:last-child>div {
+				margin-bottom: 5%;
+			}
+			
+			#table>div:last-child>div:first-child>span {
+				display: inline-block;
+				border: 3px solid bisque;
+				border-radius: 5rem;
+				padding: 5px 10px;
+			}
+			
+			.animateOne {
+				animation: stars 2s infinite;
+				-webkit-animation: stars 2s infinite;
+			}
+			
+			#table>div:last-child>div:nth-child(2) {
+				transform: scale(0.9);
+				opacity: 0.5;
+				border: 3px solid bisque;
+				border-radius: 1rem;
+			}
+			
+			#table>div:last-child>div:nth-child(2)>span:nth-child(1) {
+				font-size: 1.2rem;
+				line-height: 170%;
+			}
+			
+			#table>div:last-child>div:nth-child(2)>span:nth-child(4),
+			#table>div:last-child>div:nth-child(2)>span:nth-child(5) {
+				display: inline-block;
+				width: 6rem;
+				height: 6rem;
+				background-image: url(img/1.png);
+				background-size: 90% 90%;
+				background-position: 0.3rem 0.3rem;
+				background-repeat: no-repeat;
+				margin-top: 5%;
+				margin-right: 5%;
+				border-radius: 10rem;
+				box-shadow: 0 0 10px black;
+			}
+			
+			.animateTwo {
+				animation: roundLeft 4s linear 0s infinite;
+				-webkit-animation: roundLeft 4s linear 0s infinite;
+			}
+			
+			#table>div:last-child>div:nth-child(2)>span:nth-child(5) {
+				background-image: url(img/2.png);
+				margin-right: 0;
+			}
+			
+			.animateThree {
+				animation: roundRight 4s linear 0s infinite;
+				-webkit-animation: roundRight 4s linear 0s infinite;;
+			}
+			
+			@keyframes stars {
+				0% {
+					opacity: 0.5;
+					transform: scale(0.95);
+				}
+				50% {
+					opacity: 1;
+					transform: scale(1);
+				}
+				100% {
+					opacity: 0.5;
+					transform: scale(0.95);
+				}
+			}
+			@-webkit-keyframes stars{
+				0% {
+					opacity: 0.5;
+					transform: scale(0.95);
+					-webkit-transform: scale(0.95);
+				}
+				50% {
+					opacity: 1;
+					transform: scale(1);
+					-webkit-transform: scale(1);
+				}
+				100% {
+					opacity: 0.5;
+					transform: scale(0.95);
+					-webkit-transform: scale(0.95);
+				}
+			}
+			
+			@keyframes roundLeft {
+				0% {
+					transform: rotate(0deg);
+				}
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+			@-webkit-keyframes roundLeft{
+				0% {
+					transform: rotate(0deg);
+					-webkit-transform: rotate(0deg);
+				}
+				100% {
+					transform: rotate(360deg);
+					-webkit-transform: rotate(360deg);
+				}
+			}
+			
+			@keyframes roundRight {
+				0% {
+					transform: rotate(360deg);
+				}
+				100% {
+					transform: rotate(0deg);
+				}
+			}
+			@-webkit-keyframes roundRight{
+				0% {
+					transform: rotate(360deg);
+					-webkit-transform: rotate(360deg);
+				}
+				100% {
+					transform: rotate(0deg);
+					-webkit-transform: rotate(0deg);
+				}
+			}
+			
+			#table>div:last-child>div:nth-child(2)>span:nth-child(2),
+			#table>div:last-child>div:nth-child(2)>span:nth-child(3) {
+				position: absolute;
+				font-size: 2rem;
+				color: #6641E2;
+				top: 56%;
+				left: 24%;
+				text-shadow: 1px 1px 2px black;
+			}
+			
+			#table>div:last-child>div:nth-child(2)>span:nth-child(3) {
+				left: 64%;
+			}
+		</style>
+		<script src="js/template-web.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/html" id="seatInit">
+			<% if(num){ %>
+			<% for(var i = 0; i < num; i++){ %>
+			<li data-seatId="<%=i+1%>"><span></span></li>
+			<% } %>
+			<% } %>
+		</script>
+	</head>
+
+	<body>
+		<div id="app">
+			<div id="table">
+				<div></div>
+				<ul>
+					<li></li>
+				</ul>
+				<div>
+					<div>
+						<span class="animateOne">第1步:请点击座位设置起始玩家位置</span>
+					</div>
+					<div>
+						<span>第2步:请选择座位的排序方式</span>
+						<span>顺</span>
+						<span>逆</span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/javascript">
+			mui.init()
+			var data;
+			data = initData();
+			seatList(data);
+			seat(data);
+
+			//初始化数据
+			function initData() {
+				var pluginData = JSON.parse(localStorage.getItem('pluginData'));
+				pluginData.tableList = {
+					6: [{
+						top: -19,
+						left: 0
+					}, {
+						top: -8,
+						left: -10
+					}, {
+						top: 8,
+						left: -10
+					}, {
+						top: 19,
+						left: 0
+					}, {
+						top: 8,
+						left: 10
+					}, {
+						top: -8,
+						left: 10
+					}],
+					7: [{
+						top: -19,
+						left: 0
+					}, {
+						top: -10,
+						left: -10
+					}, {
+						top: 0,
+						left: -10
+					}, {
+						top: 10,
+						left: -10
+					}, {
+						top: 19,
+						left: 0
+					}, {
+						top: 7,
+						left: 10
+					}, {
+						top: -7,
+						left: 10
+					}],
+					8: [{
+						top: -19,
+						left: 0
+					}, {
+						top: -10,
+						left: -10
+					}, {
+						top: 0,
+						left: -10
+					}, {
+						top: 10,
+						left: -10
+					}, {
+						top: 19,
+						left: 0
+					}, {
+						top: 10,
+						left: 10
+					}, {
+						top: 0,
+						left: 10
+					}, {
+						top: -10,
+						left: 10
+					}],
+					9: [{
+						top: -19,
+						left: 0
+					}, {
+						top: -14,
+						left: -9
+					}, {
+						top: -5,
+						left: -10
+					}, {
+						top: 5,
+						left: -10
+					}, {
+						top: 14,
+						left: -9
+					}, {
+						top: 19,
+						left: 0
+					}, {
+						top: 10,
+						left: 10
+					}, {
+						top: 0,
+						left: 10
+					}, {
+						top: -10,
+						left: 10
+					}],
+					10: [{
+						top: -19,
+						left: 0
+					}, {
+						top: -14,
+						left: -9
+					}, {
+						top: -5,
+						left: -10
+					}, {
+						top: 5,
+						left: -10
+					}, {
+						top: 14,
+						left: -9
+					}, {
+						top: 19,
+						left: 0
+					}, {
+						top: 14,
+						left: 9
+					}, {
+						top: 5,
+						left: 10
+					}, {
+						top: -5,
+						left: 10
+					}, {
+						top: -14,
+						left: 9
+					}],
+					11: [{
+						top: -19,
+						left: 0
+					}, {
+						top: -16,
+						left: -8
+					}, {
+						top: -9,
+						left: -10
+					}, {
+						top: 0,
+						left: -10
+					}, {
+						top: 9,
+						left: -10
+					}, {
+						top: 16,
+						left: -8
+					}, {
+						top: 19,
+						left: 0
+					}, {
+						top: 14,
+						left: 9
+					}, {
+						top: 5,
+						left: 10
+					}, {
+						top: -5,
+						left: 10
+					}, {
+						top: -14,
+						left: 9
+					}],
+					12: [{
+						top: -19,
+						left: 0
+					}, {
+						top: -16,
+						left: -8
+					}, {
+						top: -9,
+						left: -10
+					}, {
+						top: 0,
+						left: -10
+					}, {
+						top: 9,
+						left: -10
+					}, {
+						top: 16,
+						left: -8
+					}, {
+						top: 19,
+						left: 0
+					}, {
+						top: 16,
+						left: 8
+					}, {
+						top: 9,
+						left: 10
+					}, {
+						top: 0,
+						left: 10
+					}, {
+						top: -9,
+						left: 10
+					}, {
+						top: -16,
+						left: 8
+					}]
+				};
+				console.log(pluginData);
+				return pluginData;
+			}
+			//初始化座位列表
+			function seatList(data) {
+				var box = null;
+				box = $('#table>ul');
+				box.html('');
+				var html = template("seatInit", data);
+				box.html(html);
+			}
+			//初始化座位位置
+			function seat(data) {
+				var arr;
+				var seatList = $('#table>ul>li');
+				var seatCoord = data.tableList[seatList.length];
+				$.each(seatList, function(index, item) {
+					$(item).css({
+						top: seatCoord[index].top + 'rem',
+						left: seatCoord[index].left + 'rem'
+					})
+				});
+
+				seatList.one('tap', function() {
+					$(this).children().html(1);
+					seatList.off('tap');
+					var anOne = $('#table>div:last-child>div:first-child>span');
+					var anTwo = $('#table>div:last-child>div:nth-child(2)');
+					var state = null;
+					var i = $(this).attr('data-seatid');
+					//停止闪动动画
+					anOne.removeClass('animateOne');
+					anOne[0].style.opacity = '0.5';
+					anTwo[0].style.opacity = '1';
+					//添加旋转动画
+					anTwo.children('span:nth-child(4)').addClass('animateTwo');
+					anTwo.children('span:nth-child(5)').addClass('animateThree');
+					anTwo.children('span:nth-child(4)').on('tap', function(e) {
+						state = false;
+						arr = compositor(state, i);
+						$.each(arr, function(i, k) {
+							(function(index) {
+								setTimeout(function() {
+									$(k).children().html($(k).attr('data-seatid'));
+								}, 35*index);
+							})(i);
+						});
+					});
+					anTwo.children('span:nth-child(5)').on('tap', function(e) {
+						state = true;
+						arr = compositor(state, i);
+						$.each(arr, function(i, k) {
+							(function(index) {
+								setTimeout(function() {
+									$(k).children().html($(k).attr('data-seatid'));
+								}, 35*index);
+							})(i);
+						});
+					});
+					btn();
+				})
+			}
+			//玩家座位重新排序
+			function compositor(state, index) {
+				var seatList = $('#table>ul>li');
+				var arr = [];
+				$.each(seatList, function(k, item) {
+					arr.push(item);
+				});
+				var arr1, arr2;
+				if(state) {
+					arr1 = arr.slice(0, index - 1);
+					arr2 = arr.slice(index - 1);
+					arr = arr2.concat(arr1);
+				} else {
+					arr1 = arr.slice(0, index).reverse();
+					arr2 = arr.slice(index).reverse();
+					arr = arr1.concat(arr2);
+				}
+				$.each(arr, function(i, k) {
+					$(k).attr('data-seatid', i + 1);
+				});
+				return arr;
+			}
+			//li标签点击事件
+			function btn() {
+				$('#table>ul').on('tap', 'li', function() {
+					console.log(1);
+				})
+			}
+		</script>
+	</body>
+
+</html>
