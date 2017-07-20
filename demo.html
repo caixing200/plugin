@@ -120,7 +120,8 @@
 			
 			.animateThree {
 				animation: roundRight 4s linear 0s infinite;
-				-webkit-animation: roundRight 4s linear 0s infinite;;
+				-webkit-animation: roundRight 4s linear 0s infinite;
+				;
 			}
 			
 			@keyframes stars {
@@ -137,7 +138,8 @@
 					transform: scale(0.95);
 				}
 			}
-			@-webkit-keyframes stars{
+			
+			@-webkit-keyframes stars {
 				0% {
 					opacity: 0.5;
 					transform: scale(0.95);
@@ -163,7 +165,8 @@
 					transform: rotate(360deg);
 				}
 			}
-			@-webkit-keyframes roundLeft{
+			
+			@-webkit-keyframes roundLeft {
 				0% {
 					transform: rotate(0deg);
 					-webkit-transform: rotate(0deg);
@@ -182,7 +185,8 @@
 					transform: rotate(0deg);
 				}
 			}
-			@-webkit-keyframes roundRight{
+			
+			@-webkit-keyframes roundRight {
 				0% {
 					transform: rotate(360deg);
 					-webkit-transform: rotate(360deg);
@@ -205,6 +209,10 @@
 			
 			#table>div:last-child>div:nth-child(2)>span:nth-child(3) {
 				left: 64%;
+			}
+			
+			.ishide {
+				display: none;
 			}
 		</style>
 		<script src="js/template-web.js" type="text/javascript" charset="utf-8"></script>
@@ -240,6 +248,7 @@
 		</div>
 		<script src="js/mui.min.js"></script>
 		<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/fx.js" type="text/javascript" charset="utf-8"></script>
 
 		<script type="text/javascript">
 			mui.init()
@@ -253,7 +262,7 @@
 				var pluginData = JSON.parse(localStorage.getItem('pluginData'));
 				pluginData.tableList = {
 					6: [{
-						top: -19,
+						top: -18,
 						left: 0
 					}, {
 						top: -8,
@@ -262,7 +271,7 @@
 						top: 8,
 						left: -10
 					}, {
-						top: 19,
+						top: 18,
 						left: 0
 					}, {
 						top: 8,
@@ -272,7 +281,7 @@
 						left: 10
 					}],
 					7: [{
-						top: -19,
+						top: -18,
 						left: 0
 					}, {
 						top: -10,
@@ -284,7 +293,7 @@
 						top: 10,
 						left: -10
 					}, {
-						top: 19,
+						top: 18,
 						left: 0
 					}, {
 						top: 7,
@@ -294,7 +303,7 @@
 						left: 10
 					}],
 					8: [{
-						top: -19,
+						top: -18,
 						left: 0
 					}, {
 						top: -10,
@@ -306,7 +315,7 @@
 						top: 10,
 						left: -10
 					}, {
-						top: 19,
+						top: 18,
 						left: 0
 					}, {
 						top: 10,
@@ -319,7 +328,7 @@
 						left: 10
 					}],
 					9: [{
-						top: -19,
+						top: -18,
 						left: 0
 					}, {
 						top: -14,
@@ -334,7 +343,7 @@
 						top: 14,
 						left: -9
 					}, {
-						top: 19,
+						top: 18,
 						left: 0
 					}, {
 						top: 10,
@@ -347,7 +356,7 @@
 						left: 10
 					}],
 					10: [{
-						top: -19,
+						top: -18,
 						left: 0
 					}, {
 						top: -14,
@@ -362,7 +371,7 @@
 						top: 14,
 						left: -9
 					}, {
-						top: 19,
+						top: 18,
 						left: 0
 					}, {
 						top: 14,
@@ -378,7 +387,7 @@
 						left: 9
 					}],
 					11: [{
-						top: -19,
+						top: -18,
 						left: 0
 					}, {
 						top: -16,
@@ -396,7 +405,7 @@
 						top: 16,
 						left: -8
 					}, {
-						top: 19,
+						top: 18,
 						left: 0
 					}, {
 						top: 14,
@@ -412,7 +421,7 @@
 						left: 9
 					}],
 					12: [{
-						top: -19,
+						top: -18,
 						left: 0
 					}, {
 						top: -16,
@@ -430,7 +439,7 @@
 						top: 16,
 						left: -8
 					}, {
-						top: 19,
+						top: 18,
 						left: 0
 					}, {
 						top: 16,
@@ -493,7 +502,14 @@
 							(function(index) {
 								setTimeout(function() {
 									$(k).children().html($(k).attr('data-seatid'));
-								}, 35*index);
+									if(arr.length == (index + 1)) {
+										$('#table>div:nth-child(3)').animate({
+											opacity: 0.2
+										}, 500, 'ease-out', function() {
+											$(this).addClass('ishide');
+										});
+									}
+								}, 40 * index);
 							})(i);
 						});
 					});
@@ -504,7 +520,14 @@
 							(function(index) {
 								setTimeout(function() {
 									$(k).children().html($(k).attr('data-seatid'));
-								}, 35*index);
+									if(arr.length == (index + 1)) {
+										$('#table>div:nth-child(3)').animate({
+											opacity: 0.2
+										}, 500, 'ease-out', function() {
+											$(this).addClass('ishide');
+										});
+									}
+								}, 40 * index);
 							})(i);
 						});
 					});
