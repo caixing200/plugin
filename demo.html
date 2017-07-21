@@ -572,10 +572,16 @@
 			//跟手滑动效果
 			function sw(){
 				$('#table>ul').on('touchstart','li',function(e){
-					var tarData;
+					var tarData,eleX,eleY,tarX,tarY;
 					
 					$(this).on('touchmove',function(e){
-						tarData = e.targetTouches[0]
+						if(e.targetTouches.length == 1){
+							tarData = e.targetTouches[0];
+							eleX = tarData.pageX;
+							eleY = tarData.pageY;
+							
+						}
+						
 						console.log(e);
 					});
 					
