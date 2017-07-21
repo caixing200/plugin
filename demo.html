@@ -255,7 +255,7 @@
 
 		<script type="text/javascript">
 			mui.init()
-			var data;
+			var data,ele;
 			data = initData();
 			seatList(data);
 			seat(data);
@@ -510,6 +510,7 @@
 											opacity: 0.2
 										}, 500, 'ease-out', function() {
 											$(this).addClass('ishide');
+											sw();
 										});
 									}
 								}, 40 * index);
@@ -528,6 +529,7 @@
 											opacity: 0.2
 										}, 500, 'ease-out', function() {
 											$(this).addClass('ishide');
+											sw();
 										});
 									}
 								}, 40 * index);
@@ -561,8 +563,23 @@
 			}
 			//li标签点击事件
 			function btn() {
-				$('#table>ul').on('tap', 'li', function() {
+				$('#table>ul>li').on('tap', 'span', function() {
+					ele = this;
 					console.log(1);
+				})
+			}
+			
+			//跟手滑动效果
+			function sw(){
+				$('#table>ul').on('touchstart','li',function(e){
+					var tarData;
+					
+					$(this).on('touchmove',function(e){
+						tarData = e.targetTouches[0]
+						console.log(e);
+					});
+					
+					
 				})
 			}
 		</script>

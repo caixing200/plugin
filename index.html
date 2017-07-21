@@ -192,6 +192,7 @@
 				(function(win) {
 					localStorage.removeItem('pluginData');
 					$('#start').on('tap', function() {
+						openPage();
 						var data = {};
 						var checkNum = /^[0-9]+$/;
 						var num = $('#num').val();
@@ -236,7 +237,23 @@
 					}
 					//打开记事页面
 					function openPage() {
-						window.location.href = 'demo.html';
+//						window.location.href = 'demo.html';
+						var clientWidth = document.body.clientWidth;
+						var clientHeight = document.body.clientHeight;
+						var offsetWidth = document.body.offsetWidth;
+						var offsetHeight = document.body.offsetHeight;
+						var scrollWidth = document.body.scrollWidth;
+						var scrollHeight = document.body.scrollHeight;
+						var availHeight = window.screen.availHeight;
+						var availWidth = window.screen.availWidth;
+						alert('clientWidth='+clientWidth
+							+';clientHeight='+clientHeight
+							+';offsetWidth='+offsetWidth
+							+';offsetHeight='+offsetHeight
+							+';scrollWidth='+scrollWidth
+							+';scrollHeight='+scrollHeight
+							+';availHeight='+availHeight
+							+';availWidth='+availWidth);
 					}
 				})(window)
 			}
